@@ -30,6 +30,16 @@
 	shana_img=DiffMaxImgCrawler('data/shana_img',shana)
 	shana_img.start()
 	
-上面创建了两个爬虫，SubPageCrawler是顺着索引页爬取的。DiffMaxImgCrawler
-接受主爬虫作为其资源的来源，并将图片爬取下来。
+下载文章
+
+	index_url='http://www.90bbbb.com/html/part/index27.html'
+	spc=SubPageCrawler('data/test',[index_url])
+	dmcc=DiffMaxClusterCrawler('data/content',spc)
+	dmcc.start()
+	
+	ae=ArticleExtractor("data/story",dmcc)
+	ae.start()
+	
+可以下载列表下所有文章
+
 
